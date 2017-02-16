@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+﻿using System.Windows;
+using SharpGL;
+using SharpGL.SceneGraph;
 namespace OpenGL_test
 {
     /// <summary>
@@ -24,5 +12,30 @@ namespace OpenGL_test
         {
             InitializeComponent();
         }
+        private void OpenGLControl_OpenGLInitialized(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
+        {
+            var gl = args.OpenGL;
+            gl.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);//цвет фона
+            
+        }
+        private void OpenGLControl_OpenGLDraw(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
+        {
+            var gl = args.OpenGL;
+            gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
+            gl.Begin(OpenGL.GL_TRIANGLES);
+            gl.Color(1.0f, 0.0f, 0.0f);
+            gl.Vertex(0.0f, 0.5f);//координаты вершин
+            gl.Vertex(-0.5f, -0.5f);
+            gl.Vertex(0.5f, -0.5f);
+            gl.End();
+            gl.Flush();
+        }
+        private void OpenGLControl_Resized(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
+        {
+
+        }
     }
-}
+
+
+    }
+
