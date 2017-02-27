@@ -47,20 +47,17 @@ namespace OpenGL_test
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            R = 0;
-            R = Convert.ToSingle(R + slider.Value / 255);
+            R = Convert.ToSingle(slider.Value / 255);
         }
 
         private void slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            G = 0;
-            G = Convert.ToSingle(G + slider1.Value / 255);
+            G = Convert.ToSingle(slider1.Value / 255);
         }
 
         private void slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            B = 0;
-            B = Convert.ToSingle(B + slider2.Value / 255);
+            B = Convert.ToSingle(slider2.Value / 255);
         }
     }
 
