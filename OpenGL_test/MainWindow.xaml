@@ -4,17 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenGL_test"
-       xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
+        xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
         mc:Ignorable="d"
-        Title="SharpGL_test" Height="500" Width="550">
-    <Grid Margin="0,0,-8,0" >
-        <sharpGL:OpenGLControl OpenGLDraw="OpenGLControl_OpenGLDraw"
+        Title="SharpGL_test" Height="456" Width="550">
+    <Grid>
+        <sharpGL:OpenGLControl 
+                               Name="GLcontrol"
+                               OpenGLDraw="OpenGLControl_OpenGLDraw"
                                OpenGLInitialized="OpenGLControl_OpenGLInitialized"
-                              Resized="OpenGLControl_Resized"
-                               DrawFPS="True"
+                               Resized="OpenGLControl_Resized"
+                               DrawFPS="True" Margin="37,10,29,162"
                                
                                />
-     
+        <Grid HorizontalAlignment="Stretch" Height="111" Margin="0,0,0,10" VerticalAlignment="Bottom"
+              
+              >
+            <Slider x:Name="slider" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="476" Minimum="0" Maximum="255" Value="0" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider_ValueChanged" />
+            <Slider x:Name="slider1" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" Width="476" Minimum="0" Maximum="255" Value="0" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider1_ValueChanged"/>
+            <Slider x:Name="slider2" HorizontalAlignment="Center" Margin="28,83,28,0" VerticalAlignment="Top" RenderTransformOrigin="-3.417,0.667" Width="476" Minimum="0" Maximum="255" Value="0" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider2_ValueChanged"/>
+            <Label x:Name="label1" Content="G" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.944,1.615"/>
+            <Label x:Name="label" Content=" R" HorizontalAlignment="Left" Margin="8,7,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label2" Content="G" HorizontalAlignment="Left" Margin="11,44,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label3" Content="B" HorizontalAlignment="Left" Margin="11,79,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label4" Content="{Binding ElementName=slider,Path=Value}" HorizontalAlignment="Right" Margin="0,7,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label5" Content="{Binding ElementName=slider1,Path=Value}" HorizontalAlignment="Right" Margin="0,38,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label6" Content="{Binding ElementName=slider2,Path=Value}" HorizontalAlignment="Right" Margin="0,79,0,0" VerticalAlignment="Top"/>
+        </Grid>
+
 
 
 
