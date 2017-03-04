@@ -29,16 +29,29 @@ namespace OpenGL_test
             var gl = args.OpenGL;
             gl.ClearColor(R,G,B,0);
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
-            gl.Begin(OpenGL.GL_TRIANGLES);
-            gl.Color(1f, 0f, 0f);
-            gl.Vertex(0.0f, 0.5f);
-            gl.Vertex(-0.5f, -0.5f);
-            gl.Vertex(0.5f, -0.5f);
+
+            int i = 0;
+            int N = 10000;
+            float t = 0.0f;
+            float t_step = 0.05f;
+            double A = 1.0;
+            double b = 0.5;
+            double x, y;
+
+            gl.Color(0.0, 0.0, 1.0);
+            gl.Begin(OpenGL.GL_LINE_LOOP);
+            for (i = 0; i < N; i++)
+            {
+                x = A * Math.Sin(t);
+                y = A * Math.Sin(t) * Math.Sin(0.44 * t) + b * Math.Cos(t) * Math.Cos(t);
+                gl.Vertex(x, y);
+                t += t_step;
+            }
             gl.End();
             gl.Flush();
-            
-            
-            
+
+
+
         }
         private void OpenGLControl_Resized(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
         {
