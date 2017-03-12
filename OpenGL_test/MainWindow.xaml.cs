@@ -1,6 +1,20 @@
 ﻿using System.Windows;
 using SharpGL;
 using System;
+using System.Windows.Controls;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+
 
 namespace OpenGL_test
 {
@@ -15,9 +29,10 @@ namespace OpenGL_test
           
            
         }
-        public float R;
-        public float G;
-        public float B;
+        
+        public float f;
+        public int vertex;
+        public float a = 0;
         private void OpenGLControl_OpenGLInitialized(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
         {
             var gl = args.OpenGL;
@@ -27,23 +42,22 @@ namespace OpenGL_test
         private void OpenGLControl_OpenGLDraw(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
         {
             var gl = args.OpenGL;
-            gl.ClearColor(R,G,B,0);
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
 
             int i = 0;
-            int N = 10000;
-            float t = 0.0f;
-            float t_step = 0.05f;
-            double A = 1.0;
-            double b = 0.5;
+            int N = 1600;
+            float t = -2.512f;
+            float t_step = 0.00314f;
+            double A = 0.5;
             double x, y;
 
-            gl.Color(0.0, 0.0, 1.0);
+           
             gl.Begin(OpenGL.GL_LINE_LOOP);
             for (i = 0; i < N; i++)
             {
-                x = A * Math.Sin(t);
-                y = A * Math.Sin(t) * Math.Sin(0.44 * t) + b * Math.Cos(t) * Math.Cos(t);
+                x = Math.Sin(Math.Pow(t, 3))*Math.Sin(Math.Pow(t,3));
+                y = A*(Math.Cos(Math.Pow(t,4))*Math.Cos(Math.Pow(t,4)));
+                gl.Color(0.6f, 0.9f, 0.1f);
                 gl.Vertex(x, y);
                 t += t_step;
             }
@@ -55,22 +69,13 @@ namespace OpenGL_test
         }
         private void OpenGLControl_Resized(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
         {
-
+            
         }
 
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            R = Convert.ToSingle(slider.Value / 255);
-        }
+            vertex = Convert.ToInt32(textBox.Text);
 
-        private void slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            G = Convert.ToSingle(slider1.Value / 255);
-        }
-
-        private void slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            B = Convert.ToSingle(slider2.Value / 255);
         }
     }
 
