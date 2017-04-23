@@ -24,16 +24,16 @@
         <Grid HorizontalAlignment="Stretch" Height="111" Margin="0,0,0,10" VerticalAlignment="Bottom" Grid.ColumnSpan="2"
               
               >
-            <Slider x:Name="slider" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="476" Minimum="0" Maximum="255" Value="0" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider_ValueChanged" />
-            <Slider x:Name="slider1" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" Width="476" Minimum="0" Maximum="255" Value="0" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider1_ValueChanged"/>
-            <Slider x:Name="slider2" HorizontalAlignment="Center" Margin="28,83,28,0" VerticalAlignment="Top" RenderTransformOrigin="-3.417,0.667" Width="476" Minimum="0" Maximum="255" Value="0" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="slider2_ValueChanged"/>
             <Label x:Name="label1" Content="G" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.944,1.615"/>
-            <Label x:Name="label" Content=" R" HorizontalAlignment="Left" Margin="8,7,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label2" Content="G" HorizontalAlignment="Left" Margin="11,44,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label3" Content="B" HorizontalAlignment="Left" Margin="11,79,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label4" Content="{Binding ElementName=slider,Path=Value}" HorizontalAlignment="Right" Margin="0,7,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label5" Content="{Binding ElementName=slider1,Path=Value}" HorizontalAlignment="Right" Margin="0,38,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label6" Content="{Binding ElementName=slider2,Path=Value}" HorizontalAlignment="Right" Margin="0,79,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Цилиндр" HorizontalAlignment="Left" Margin="35,7,0,0" VerticalAlignment="Top" Name="zil"/>
+            <RadioButton Content="Сфера" HorizontalAlignment="Left" Margin="35,36,0,0" VerticalAlignment="Top" x:Name="sf"/>
+            <RadioButton Content="Диск" HorizontalAlignment="Left" Margin="35,67,0,0" VerticalAlignment="Top" x:Name="ds"/>
+            <RadioButton Content="Диск(часть)" HorizontalAlignment="Left" Margin="132,7,0,0" VerticalAlignment="Top" x:Name="ds_m"/>
+            <RadioButton Content="Куб" HorizontalAlignment="Left" Margin="132,36,0,0" VerticalAlignment="Top" x:Name="kb"/>
+            <RadioButton Content="Чайник" HorizontalAlignment="Left" Margin="132,67,0,0" VerticalAlignment="Top" x:Name="tp"/>
 
         </Grid>
 

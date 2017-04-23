@@ -14,6 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SharpGL;
 using SharpGL.SceneGraph;
+using SharpGL.SceneGraph.Core;
+using SharpGL.SceneGraph.Assets;
+using SharpGL.SceneGraph.Primitives;
+
 
 
 namespace OpenGL_test
@@ -45,8 +49,8 @@ namespace OpenGL_test
             gl.Enable(OpenGL.GL_DEPTH_TEST);
             gl.Enable(OpenGL.GL_LIGHTING);
             gl.Enable(OpenGL.GL_LIGHT0);
-            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_POSITION, new float[] { 0.0f, 2f, -30f, 0 });
-            gl.Enable(OpenGL.GL_LIGHT1);
+            gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_POSITION, new float[] { 3.0f, 40f, -30f, 3.3f });
+            //gl.Enable(OpenGL.GL_LIGHT1);
             gl.Enable(OpenGL.GL_COLOR_MATERIAL);
             gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_CUTOFF, 180.0f);
             
@@ -58,20 +62,51 @@ namespace OpenGL_test
         {
 
             OpenGL gl = GLcontrol.OpenGL;
+            
             IntPtr quad = gl.NewQuadric();
+            
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
             gl.LoadIdentity();
             gl.Rotate(rotation, 1.0f, 1.0f, 1.0f);
             gl.Translate(0.0f, 0.0f, 0.0f);
+            if (kb.IsChecked == true)
+            {
+                gl.Scale(40.3, 40.3, 40.3);
+            }
             gl.Scale(0.3, 0.3, 0.3);
             gl.PushMatrix();
             gl.Color(1.0f, 1.0f, 0.0f);
-            //gl.Sphere(quad, 50, 20, 20);
-            gl.Cylinder(quad, 50, 20, 20, 10,10);
+            if (zil.IsChecked == true)
+            {
+                gl.Cylinder(quad, 50, 20, 20, 10, 10);
+            }
+            if (sf.IsChecked == true)
+            {
+                gl.Sphere(quad, 50, 20, 20);
+            }
+            if (ds.IsChecked == true)
+            {
+                gl.Disk(quad, 40, 50, 50, 50);
+                
+            }
+            if(ds_m.IsChecked==true)
+            {
+                gl.PartialDisk(quad, 40, 50, 50, 50, 50, 50);
+            }
+            if(tp.IsChecked==true)
+            {    
+                Teapot tp = new Teapot();
+                tp.Draw(gl, 50, 51, OpenGL.GL_FILL);
+            }
+            if(kb.IsChecked==true)
+            {
+                Cube cube = new Cube();
+                cube.Render(gl, RenderMode.Render);
+            }
             
-            gl.PopMatrix();
 
-            rotation += 8.0f;
+            gl.PopMatrix();
+            rotation += 5.0f;
 
 
         }
@@ -87,23 +122,7 @@ namespace OpenGL_test
             gl.MatrixMode(OpenGL.GL_MODELVIEW);
         }
 
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            R = Convert.ToSingle(slider.Value / 255);
-        }
-
-        private void slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            G = Convert.ToSingle(slider1.Value / 255);
-        }
-
-        private void slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            B = Convert.ToSingle(slider2.Value / 255);
-        }
        
-
-
     }
 
 
