@@ -17,6 +17,7 @@ using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Core;
 using SharpGL.SceneGraph.Assets;
 using SharpGL.SceneGraph.Primitives;
+using System.Text.RegularExpressions;
 
 
 
@@ -33,14 +34,24 @@ namespace OpenGL_test
 
 
         }
-        public float R;
-        public float G;
-        public float B;
         private float rotation = 0.0f;
-       
-    
+        public float e_x, e_y, e_z, c_x, c_y, c_z, u_x, u_y, u_z;
 
-    private void OpenGLControl_OpenGLInitialized(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
+        private void rot_c_Unchecked(object sender, RoutedEventArgs e)
+        {
+            rot_flag = false;
+        }
+
+        public bool rot_flag;
+
+        private void rot_c_Checked(object sender, RoutedEventArgs e)
+        {
+            rot_flag = true;
+        }
+
+
+
+        private void OpenGLControl_OpenGLInitialized(object sender, SharpGL.SceneGraph.OpenGLEventArgs args)
         {
             OpenGL gl = GLcontrol.OpenGL;
             gl.ClearColor(0, 0, 0, 0);
@@ -67,7 +78,11 @@ namespace OpenGL_test
             
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
             gl.LoadIdentity();
-            gl.Rotate(rotation, 1.0f, 1.0f, 1.0f);
+            //gl.LookAt(e_x, e_y, e_z, c_x, c_y, c_z, u_x, u_y, u_z);
+            if (rot_flag == true)
+            {
+                gl.Rotate(rotation, 1.0f, 1.0f, 1.0f);
+            }
             gl.Translate(0.0f, 0.0f, 0.0f);
             if (kb.IsChecked == true)
             {
@@ -79,6 +94,7 @@ namespace OpenGL_test
             if (zil.IsChecked == true)
             {
                 gl.Cylinder(quad, 50, 20, 20, 10, 10);
+                
             }
             if (sf.IsChecked == true)
             {
@@ -97,6 +113,7 @@ namespace OpenGL_test
             {    
                 Teapot tp = new Teapot();
                 tp.Draw(gl, 50, 51, OpenGL.GL_FILL);
+              
             }
             if(kb.IsChecked==true)
             {
@@ -117,12 +134,43 @@ namespace OpenGL_test
             gl.MatrixMode(OpenGL.GL_PROJECTION);
             gl.LoadIdentity();
             gl.Viewport(0, 0, (int)Width, (int)Height);
+            gl.Ortho(5, 5, 5, -1,1,1);
             gl.Perspective(90.0f, (double)Width / (double)Height, 1, 200.0);
             gl.LookAt(0, -1, -30, 0, 0, 0, 0, 1, 0);
             gl.MatrixMode(OpenGL.GL_MODELVIEW);
         }
 
-       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Regex X = new Regex(@"^[+-]?\d*(\.\d+)?$");
+            if (X.IsMatch(e_x_text.Text) || X.IsMatch(e_y_text.Text) || X.IsMatch(e_z_text.Text) || X.IsMatch(c_x_text.Text) ||
+                X.IsMatch(c_y_text.Text) || X.IsMatch(c_z_text.Text) || X.IsMatch(u_x_text.Text) || X.IsMatch(u_y_text.Text) || X.IsMatch(u_z_text.Text))
+            { if (e_x_text.Text == "" || e_y_text.Text == "" || e_z_text.Text == "" || c_x_text.Text == "" || c_y_text.Text == "" || c_y_text.Text == "" ||
+                  u_x_text.Text == "" || u_y_text.Text == "" || u_z_text.Text == "")
+                {
+                    MessageBox.Show("Ошибка ввода!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    OpenGL gl = GLcontrol.OpenGL;
+                    e_x = Convert.ToSingle(e_x_text.Text);
+                    e_y = Convert.ToSingle(e_y_text.Text);
+                    e_z = Convert.ToSingle(e_z_text.Text);
+                    c_x = Convert.ToSingle(c_x_text.Text);
+                    c_y = Convert.ToSingle(c_y_text.Text);
+                    c_z = Convert.ToSingle(c_z_text.Text);
+                    u_x = Convert.ToSingle(u_x_text.Text);
+                    u_y = Convert.ToSingle(u_y_text.Text);
+                    u_z = Convert.ToSingle(u_z_text.Text);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ошибка ввода!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
+
+        }
     }
 
 

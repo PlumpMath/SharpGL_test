@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OpenGL_test"
         xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
         mc:Ignorable="d"
-        Title="SharpGL_test" Height="456" Width="550">
+        Title="SharpGL_test" Height="456" Width="899">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -21,7 +21,7 @@
                                 
                                
                                />
-        <Grid HorizontalAlignment="Stretch" Height="111" Margin="0,0,0,10" VerticalAlignment="Bottom" Grid.ColumnSpan="2"
+        <Grid HorizontalAlignment="Stretch" Height="124" VerticalAlignment="Bottom" Grid.ColumnSpan="2"
               
               >
             <Label x:Name="label1" Content="G" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.944,1.615"/>
@@ -34,8 +34,22 @@
             <RadioButton Content="Диск(часть)" HorizontalAlignment="Left" Margin="132,7,0,0" VerticalAlignment="Top" x:Name="ds_m"/>
             <RadioButton Content="Куб" HorizontalAlignment="Left" Margin="132,36,0,0" VerticalAlignment="Top" x:Name="kb"/>
             <RadioButton Content="Чайник" HorizontalAlignment="Left" Margin="132,67,0,0" VerticalAlignment="Top" x:Name="tp"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="255,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="e_x_text"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="255,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="e_y_text"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="255,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="e_z_text"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="394,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="c_x_text"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="394,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="c_y_text"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="394,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="c_z_text"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="534,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="u_x_text"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="534,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="u_y_text"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="534,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="u_z_text"/>
+            <Button Content="Сменить углол обзора" HorizontalAlignment="Left" Margin="683,56,0,0" VerticalAlignment="Top" Width="137" Height="35" Click="Button_Click"/>
+            <Label Content="X" HorizontalAlignment="Left" Margin="233,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="3,0.609"/>
+            <Label Content="Y" HorizontalAlignment="Left" Margin="233,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="3,0.609"/>
+            <CheckBox Content="Вращение" HorizontalAlignment="Left" Margin="683,7,0,0" VerticalAlignment="Top" Checked="rot_c_Checked" Name="rot_c" Unchecked="rot_c_Unchecked"/>
 
         </Grid>
+        <Label Content="Z" HorizontalAlignment="Left" Margin="219,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="3,0.609" Grid.Column="1"/>
 
 
 
