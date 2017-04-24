@@ -75,10 +75,10 @@ namespace OpenGL_test
             OpenGL gl = GLcontrol.OpenGL;
             
             IntPtr quad = gl.NewQuadric();
-            
+
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
             gl.LoadIdentity();
-            //gl.LookAt(e_x, e_y, e_z, c_x, c_y, c_z, u_x, u_y, u_z);
+            gl.LookAt(e_x, e_y, e_z, c_x, c_y, c_z, u_x, u_y, u_z);
             if (rot_flag == true)
             {
                 gl.Rotate(rotation, 1.0f, 1.0f, 1.0f);
@@ -142,7 +142,7 @@ namespace OpenGL_test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Regex X = new Regex(@"^[+-]?\d*(\.\d+)?$");
+            Regex X = new Regex(@"^[+-]?\d*(\,\d+)?$");
             if (X.IsMatch(e_x_text.Text) || X.IsMatch(e_y_text.Text) || X.IsMatch(e_z_text.Text) || X.IsMatch(c_x_text.Text) ||
                 X.IsMatch(c_y_text.Text) || X.IsMatch(c_z_text.Text) || X.IsMatch(u_x_text.Text) || X.IsMatch(u_y_text.Text) || X.IsMatch(u_z_text.Text))
             { if (e_x_text.Text == "" || e_y_text.Text == "" || e_z_text.Text == "" || c_x_text.Text == "" || c_y_text.Text == "" || c_y_text.Text == "" ||
