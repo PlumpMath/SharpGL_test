@@ -6,25 +6,21 @@
         xmlns:local="clr-namespace:OpenGL_test"
         xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
         mc:Ignorable="d"
-        Title="SharpGL_test" Height="456" Width="899">
+        Title="SharpGL_test" Height="583" Width="1061">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="267*"/>
-        </Grid.ColumnDefinitions>
+
         <sharpGL:OpenGLControl 
                                Name="GLcontrol"
                                OpenGLDraw="OpenGLControl_OpenGLDraw"
                                OpenGLInitialized="OpenGLControl_OpenGLInitialized"
                                Resized="OpenGLControl_Resized"
-                               DrawFPS="True" Margin="29,10,29,162" Grid.Column="1"
+                               DrawFPS="True" Margin="29,10,29,129"
                                 
                                
                                />
         <Grid HorizontalAlignment="Stretch" Height="124" VerticalAlignment="Bottom" Grid.ColumnSpan="2"
               
               >
-            <Label x:Name="label1" Content="G" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.944,1.615"/>
             <Label x:Name="label4" Content="{Binding ElementName=slider,Path=Value}" HorizontalAlignment="Right" Margin="0,7,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label5" Content="{Binding ElementName=slider1,Path=Value}" HorizontalAlignment="Right" Margin="0,38,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label6" Content="{Binding ElementName=slider2,Path=Value}" HorizontalAlignment="Right" Margin="0,79,0,0" VerticalAlignment="Top"/>
@@ -46,15 +42,15 @@
             <Button Content="Сменить углол обзора" HorizontalAlignment="Left" Margin="683,56,0,0" VerticalAlignment="Top" Width="137" Height="35" Click="Button_Click"/>
             <Label Content="X" HorizontalAlignment="Left" Margin="233,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="3,0.609"/>
             <Label Content="Y" HorizontalAlignment="Left" Margin="233,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="3,0.609"/>
-            <CheckBox Content="Вращение" HorizontalAlignment="Left" Margin="683,7,0,0" VerticalAlignment="Top" Checked="rot_c_Checked" Name="rot_c" Unchecked="rot_c_Unchecked"/>
+            <CheckBox Content="Вращение" HorizontalAlignment="Left" Margin="683,5,0,0" VerticalAlignment="Top" Checked="rot_c_Checked" Name="rot_c" Unchecked="rot_c_Unchecked"/>
+            <RadioButton Content="Цикличесикй обьект" HorizontalAlignment="Left" Margin="35,99,0,0" VerticalAlignment="Top" Name="Z_o"/>
+            <Label Content="Z" HorizontalAlignment="Left" Margin="233,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="3,0.609"/>
+            <RadioButton Content="Модель солнечной системы" HorizontalAlignment="Left" Margin="188,99,0,0" VerticalAlignment="Top" x:Name="S_S"/>
+            <Slider HorizontalAlignment="Left" Margin="683,30,0,0" VerticalAlignment="Top" Width="137" Value="1" Minimum="1" Maximum="50" Name="sl"/>
+            <RadioButton Content="Обьект" HorizontalAlignment="Left" Margin="377,99,0,0" VerticalAlignment="Top" x:Name="O_O"/>
+            <RadioButton Content="Оси координат" HorizontalAlignment="Left" Margin="456,99,0,0" VerticalAlignment="Top" x:Name="O_k"/>
 
         </Grid>
-        <Label Content="Z" HorizontalAlignment="Left" Margin="219,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="3,0.609" Grid.Column="1"/>
-
-
-
-
-
     </Grid>
 
 </Window>
