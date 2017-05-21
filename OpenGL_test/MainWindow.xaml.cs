@@ -37,6 +37,7 @@ namespace OpenGL_test
         private float rotation = 0.0f;
         public float e_x, e_y, e_z, c_x, c_y, c_z, u_x, u_y, u_z;
         public bool p_flag;
+        public bool clock;
 
         private void rot_c_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -84,9 +85,19 @@ namespace OpenGL_test
                 gl.LookAt(e_x, e_y, e_z, c_x, c_y, c_z, u_x, u_y, u_z);
             }
             if (rot_flag == true)
+                
             {
-                gl.Rotate(rotation, 1.0f, 1.0f, 1.0f);
+
+                if (clock == true)
+                {
+                    gl.Rotate(rotation, 0.0f, 0.0f, 1.0f);
+                }
+                else
+                {
+                    gl.Rotate(rotation, 1.0f, 1.0f, 1.0f);
+                }
             }
+
             gl.Translate(0.0f, 0.0f, 0.0f);
             if (kb.IsChecked == true||Z_o.IsChecked==true)
             {
@@ -98,34 +109,41 @@ namespace OpenGL_test
             if (zil.IsChecked == true)
             {
                 gl.Cylinder(quad, 50, 30, 30, 20, 20);
+                clock = false;
                 
             }
             if (sf.IsChecked == true)
             {
                 gl.Sphere(quad, 50, 100, 100);
+                clock = false;
             }
             if (ds.IsChecked == true)
             {
                 gl.Disk(quad, 40, 50, 50, 50);
-                
+                clock = false;
+
             }
             if(ds_m.IsChecked==true)
             {
                 gl.PartialDisk(quad, 40, 50, 50, 50, 50, 50);
+                clock = false;
             }
             if(tp.IsChecked==true)
             {    
                 Teapot tp = new Teapot();
                 tp.Draw(gl, 50, 51, OpenGL.GL_FILL);
-              
+                clock = false;
+
             }
             if(kb.IsChecked==true)
             {
                 Cube cube = new Cube();
                 cube.Render(gl, RenderMode.Render);
+                clock = false;
             }
             if(Z_o.IsChecked==true)
             {
+                clock = false;
                 int i, N = 20;
                 float angleStep = 360.0f / N;
                 float angleCurrent = 0f;
@@ -141,7 +159,9 @@ namespace OpenGL_test
 
             }
             if(S_S.IsChecked==true)
-            {   //рисуем солнце
+            {
+                clock = false;
+                //рисуем солнце
                 gl.Color(1.0, 1.0, 0.0);
                 gl.Sphere(quad, 30, 50, 50);
                 gl.Translate(60, 0, 0);
@@ -153,6 +173,7 @@ namespace OpenGL_test
             }
             if(O_O.IsChecked==true)
             {
+                clock = false;
                 gl.Color(0.7, 0.1, 0.0);
                 gl.Sphere(quad, 30, 40, 40);
                 gl.Translate(0, 0, 0);
@@ -183,6 +204,7 @@ namespace OpenGL_test
             }
             if(O_k.IsChecked==true)
             {
+                clock = false;
                 gl.LineWidth(2.5f);
                 gl.Scale(50.3, 50.3, 50.3);
                 gl.Begin(OpenGL.GL_LINES);
@@ -200,7 +222,82 @@ namespace OpenGL_test
                 
                 gl.End();
             }
+            if(kv.IsChecked==true)
+            {
+                clock = false;
+                gl.MatrixMode(OpenGL.GL_MODELVIEW);
+                gl.LoadIdentity();
+                gl.PushMatrix();
+                gl.Rotate(rotation, 0.0, 0.0, 1.0);
+                gl.Color(1.0, 1.0, 1.0);
+                gl.Rect(-20.0, -20.0, 20.0, 20.0);
+                gl.PopMatrix();
 
+
+
+            }
+            if(asd.IsChecked==true)
+            {
+                clock = false;
+                gl.LineWidth(3.5f);
+                gl.Scale(20.3, 20.3, 20.3);
+                gl.Begin(OpenGL.GL_LINE_STRIP);
+                gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT |OpenGL.GL_DEPTH_BUFFER_BIT);
+                gl.Rotate(rotation, 0.0, 0.0, 1.0);
+                gl.Color(1.0, 0.0, 0.0);
+                gl.Vertex(0, 0);
+                gl.Vertex(0, 3);
+                gl.Vertex(2, 2);
+                gl.Vertex(4, 3);
+                gl.Vertex(4, 0);
+                gl.Vertex(3, 0);
+                gl.Vertex(3, 1);
+                gl.Vertex(1, 1);
+                gl.Vertex(1, 0);
+                gl.Vertex(0, 0);
+                gl.End();
+            }
+            if(cl.IsChecked==true)
+            {
+                clock = false;
+                gl.MatrixMode(OpenGL.GL_MODELVIEW);
+                gl.LoadIdentity();
+                gl.PushMatrix();
+                gl.Rotate(rotation, 0.0, 0.0, 1.0);
+                gl.Color(1.0, 1.0, 1.0);
+                gl.Rect(-0.91, -20.9, 1.0, 1.0);
+                gl.PopMatrix();
+                gl.Color(0.0f, 1.0f, 0.0f);
+                gl.Begin(OpenGL.GL_LINE_LOOP);
+
+                for (int i = 0; i < 100; i++)
+                {
+                    double a = (float)i / 25.0f * 3.1415f * 2.0f;
+                    gl.Vertex(Math.Cos(a) * 28.0f, Math.Sin(a) * 28.0f);
+                }
+                gl.End();
+                gl.Begin(OpenGL.GL_LINE_STRIP);
+                gl.Vertex(-21, 0);
+                gl.Vertex(-25, 0);
+                gl.Vertex(-21, 3);
+                gl.Vertex(-25, 6);
+                gl.Vertex(-21, 6);
+                gl.End();
+                gl.Begin(OpenGL.GL_LINE_STRIP);
+                gl.Vertex(25, 0);
+                gl.Vertex(21, 0);
+                gl.Vertex(21, 3);
+                gl.Vertex(25, 3);
+                gl.Vertex(25, 6);
+                gl.Vertex(21, 6);
+                gl.Vertex(21, 3);
+
+                gl.End();
+
+
+
+
+            }
             gl.PopMatrix();
             rotation += Convert.ToSingle(sl.Value);
 

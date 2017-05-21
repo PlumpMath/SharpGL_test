@@ -49,6 +49,9 @@
             <Slider HorizontalAlignment="Left" Margin="683,30,0,0" VerticalAlignment="Top" Width="137" Value="1" Minimum="1" Maximum="50" Name="sl"/>
             <RadioButton Content="Обьект" HorizontalAlignment="Left" Margin="377,99,0,0" VerticalAlignment="Top" x:Name="O_O"/>
             <RadioButton Content="Оси координат" HorizontalAlignment="Left" Margin="456,99,0,0" VerticalAlignment="Top" x:Name="O_k"/>
+            <RadioButton Content="Квадрат" HorizontalAlignment="Left" Margin="832,7,0,0" VerticalAlignment="Top" x:Name="kv"/>
+            <RadioButton Content="Буква" HorizontalAlignment="Left" Margin="832,27,0,0" VerticalAlignment="Top" x:Name="asd"/>
+            <RadioButton Content="Часы" HorizontalAlignment="Left" Margin="832,49,0,0" VerticalAlignment="Top" x:Name="cl"/>
 
         </Grid>
     </Grid>
