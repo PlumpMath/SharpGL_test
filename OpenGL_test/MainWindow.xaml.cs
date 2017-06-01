@@ -208,18 +208,13 @@ namespace OpenGL_test
                 gl.LineWidth(2.5f);
                 gl.Scale(50.3, 50.3, 50.3);
                 gl.Begin(OpenGL.GL_LINES);
-                
                 gl.Color(1.0, 0.0, 0.0);
                 gl.Vertex(-1, -1, 0); //х
                 gl.Vertex(1, -1, 0);
-
                 gl.Vertex(-1, 1, 0); //у
                 gl.Vertex(-1, -1, 0);
-
                 gl.Vertex(-1, -1, 0);//z
                 gl.Vertex(-1, -1, 2);
-                
-                
                 gl.End();
             }
             if(kv.IsChecked==true)
@@ -232,9 +227,6 @@ namespace OpenGL_test
                 gl.Color(1.0, 1.0, 1.0);
                 gl.Rect(-20.0, -20.0, 20.0, 20.0);
                 gl.PopMatrix();
-
-
-
             }
             if(asd.IsChecked==true)
             {
@@ -260,6 +252,7 @@ namespace OpenGL_test
             if(cl.IsChecked==true)
             {
                 clock = false;
+                gl.LineWidth(3.5f);
                 gl.MatrixMode(OpenGL.GL_MODELVIEW);
                 gl.LoadIdentity();
                 gl.PushMatrix();
@@ -269,7 +262,6 @@ namespace OpenGL_test
                 gl.PopMatrix();
                 gl.Color(0.0f, 1.0f, 0.0f);
                 gl.Begin(OpenGL.GL_LINE_LOOP);
-
                 for (int i = 0; i < 100; i++)
                 {
                     double a = (float)i / 25.0f * 3.1415f * 2.0f;
@@ -277,6 +269,7 @@ namespace OpenGL_test
                 }
                 gl.End();
                 gl.Begin(OpenGL.GL_LINE_STRIP);
+                gl.PushMatrix();
                 gl.Vertex(-21, 0);
                 gl.Vertex(-25, 0);
                 gl.Vertex(-21, 3);
@@ -291,10 +284,26 @@ namespace OpenGL_test
                 gl.Vertex(25, 6);
                 gl.Vertex(21, 6);
                 gl.Vertex(21, 3);
-
                 gl.End();
-
-
+                gl.Begin(OpenGL.GL_LINE_STRIP);
+                gl.Vertex(2, 25);
+                gl.Vertex(1, 27);
+                gl.Vertex(1, 23);
+                gl.End();
+                gl.Begin(OpenGL.GL_LINE_STRIP);
+                gl.Vertex(-1, 27);
+                gl.Vertex(-3,27);
+                gl.Vertex(-1, 23);
+                gl.Vertex(-3, 23);
+                gl.End();
+                gl.Begin(OpenGL.GL_LINE_STRIP);
+                gl.Vertex(-1, -20);
+                gl.Vertex(3, -20);
+                gl.Vertex(3, -26);
+                gl.Vertex(-1, -26);
+                gl.Vertex(-1, -23);
+                gl.Vertex(3, -23);
+                gl.End();
 
 
             }

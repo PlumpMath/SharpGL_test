@@ -46,7 +46,7 @@
             <RadioButton Content="Цикличесикй обьект" HorizontalAlignment="Left" Margin="35,99,0,0" VerticalAlignment="Top" Name="Z_o"/>
             <Label Content="Z" HorizontalAlignment="Left" Margin="233,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="3,0.609"/>
             <RadioButton Content="Модель солнечной системы" HorizontalAlignment="Left" Margin="188,99,0,0" VerticalAlignment="Top" x:Name="S_S"/>
-            <Slider HorizontalAlignment="Left" Margin="683,30,0,0" VerticalAlignment="Top" Width="137" Value="1" Minimum="1" Maximum="50" Name="sl"/>
+            <Slider HorizontalAlignment="Left" Margin="683,30,0,0" VerticalAlignment="Top" Width="137" Value="2" Minimum="0" Maximum="100" Name="sl"/>
             <RadioButton Content="Обьект" HorizontalAlignment="Left" Margin="377,99,0,0" VerticalAlignment="Top" x:Name="O_O"/>
             <RadioButton Content="Оси координат" HorizontalAlignment="Left" Margin="456,99,0,0" VerticalAlignment="Top" x:Name="O_k"/>
             <RadioButton Content="Квадрат" HorizontalAlignment="Left" Margin="832,7,0,0" VerticalAlignment="Top" x:Name="kv"/>
